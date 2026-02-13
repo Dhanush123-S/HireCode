@@ -5,10 +5,12 @@ import { connectDB } from "./lib/db.js";
 import cors from "cors";
 import { serve } from "inngest/express";
 import { inngest, functions } from "./lib/inngest.js";
+import { fileURLToPath } from "url";
 
 const app = express();
 
-const __dirname = path.resolve();
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 app.use(express.json());
 app.use(cors({ origin: ENV.CLIENT_URL, credentials: true }));
@@ -23,9 +25,10 @@ app.get("/books", (req, res) => {
 });
 
 if (ENV.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "../../frontend/dist")));
-  app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "../../frontend/dist/index.html"));
+  const frontendPath = path.resolve(__dirname, "../../frontend/dist");
+  app.use(express.static(frontendPath));
+  app.get(/.*/, (req, res) => {
+    res.sendFile(path.join(frontendPath, "index.html"));
   });
 }
 
