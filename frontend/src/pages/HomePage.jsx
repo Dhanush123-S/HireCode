@@ -26,7 +26,7 @@ function HomePage() {
               <span className="font-black text-xl bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent font-mono tracking-wider">
                 HireCode
               </span>
-              <span className="text-xs text-base-content/60 font-medium -mt-2">
+              <span className="text-xs text-base-content/60 font-medium -mt-0.5">
                 Code in Sync
               </span>
             </div>
