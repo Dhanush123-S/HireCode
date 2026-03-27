@@ -87,7 +87,7 @@ function ActiveSessions({ sessions, isLoading, isUserInSession }) {
                   </div>
 
                   {session.participant && !isUserInSession(session) ? (
-                    <button className="btn btn-disabled br=tn-sm">Full</button>
+                    <button className="btn btn-disabled btn-sm">Full</button>
                   ) : (
                     <Link
                       to={`/session/${session._id}`}

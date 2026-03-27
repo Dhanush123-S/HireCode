@@ -48,7 +48,7 @@ function DashboardPage() {
     if (!user.id) return false;
 
     return (
-      session.host?.clerkid === user.id ||
+      session.host?.clerkId === user.id ||
       session.participant?.clerkId === user.id
     );
   };
